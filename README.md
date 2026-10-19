@@ -1,37 +1,42 @@
 # Desafio de Controle de Fluxo — Java
 
-Exercício prático da trilha de Java Básico da Digital Innovation One (DIO), desenvolvido para praticar estruturas de repetição, condicionais e tratamento de exceções.
+Exercício da trilha Java Básico da Digital Innovation One (DIO), desenvolvido para praticar estruturas de repetição, condicionais e tratamento de exceções.
 
 ## Objetivo
 
-Receber dois parâmetros numéricos, calcular a quantidade de iterações e imprimir uma sequência de números. O exercício também reforça a criação de uma exceção personalizada para tratar parâmetros inválidos.
+Ler dois números inteiros, validar se o segundo é maior que o primeiro e imprimir a sequência de números correspondente à diferença entre eles. Se os parâmetros forem inválidos, o programa lança uma exceção personalizada.
 
 ## Conceitos praticados
 
-- Entrada de dados e conversão numérica
+- Entrada de dados por argumentos da linha de comando
 - Estruturas condicionais e laços de repetição
-- Exceções e validação de parâmetros
-- Organização de classes Java
+- Exceções personalizadas e validação de parâmetros
+- Compilação e execução de classes Java
 
 ## Pré-requisitos
 
 - JDK instalado
-- Terminal ou Visual Studio Code
-
-Verifique a instalação:
 
 ~~~bash
 java -version
 javac -version
 ~~~
 
-## Como executar
+## Como compilar e executar
 
-Abra a pasta do desafio e confira os arquivos Java disponíveis em desafio-java/. Compile os arquivos-fonte e execute a classe que contém o método main. O nome da classe principal pode variar conforme a estrutura do exercício.
+No terminal, entre na pasta do projeto:
+
+~~~bash
+cd desafio-java
+javac -d out src/*.java
+java -cp out Contador 1 5
+~~~
+
+O exemplo executa a classe Contador com os argumentos 1 e 5. Experimente outros valores e inverta os argumentos para observar o tratamento de parâmetros inválidos.
 
 ## Contexto
 
-Este repositório registra meu aprendizado em Java. A implementação é um exercício educacional, não um aplicativo de produção.
+Projeto educacional para registrar meu aprendizado em Java; não é um aplicativo de produção.
 
 ## Autor
 
