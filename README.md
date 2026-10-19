@@ -4,11 +4,11 @@ Exercício da trilha Java Básico da Digital Innovation One (DIO), desenvolvido 
 
 ## Objetivo
 
-Ler dois números inteiros, validar se o segundo é maior que o primeiro e imprimir a sequência de números correspondente à diferença entre eles. Se os parâmetros forem inválidos, o programa lança uma exceção personalizada.
+Ler dois números inteiros, validar se o segundo é maior que o primeiro e imprimir uma sequência com a diferença entre eles. Parâmetros em ordem inválida acionam uma exceção personalizada. Entradas que não sejam números inteiros são solicitadas novamente.
 
 ## Conceitos praticados
 
-- Entrada de dados por argumentos da linha de comando
+- Entrada de dados pelo terminal
 - Estruturas condicionais e laços de repetição
 - Exceções personalizadas e validação de parâmetros
 - Compilação e execução de classes Java
@@ -29,10 +29,16 @@ No terminal, entre na pasta do projeto:
 ~~~bash
 cd desafio-java
 javac -d out src/*.java
-java -cp out Contador 1 5
+java -cp out Contador
 ~~~
 
-O exemplo executa a classe Contador com os argumentos 1 e 5. Experimente outros valores e inverta os argumentos para observar o tratamento de parâmetros inválidos.
+Informe os dois números inteiros quando solicitado. Por exemplo, para os valores 1 e 5, o programa imprime os números de 1 a 4. Texto ou entradas inválidas são rejeitados e solicitados novamente.
+
+## Cenários para validar manualmente
+
+1. Informe 1 e depois 5: devem ser impressas quatro linhas de contagem.
+2. Informe 5 e depois 1: deve ser exibida a mensagem de que o segundo parâmetro deve ser maior.
+3. Informe texto no primeiro parâmetro: o programa deve avisar que a entrada precisa ser um inteiro e solicitar novamente.
 
 ## Contexto
 
