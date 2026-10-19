@@ -2,33 +2,39 @@ import java.util.Scanner;
 
 public class Contador {
     public static void main(String[] args) {
-        Scanner terminal = new Scanner(System.in);
+        try (Scanner terminal = new Scanner(System.in)) {
+            int parametroUm = lerInteiro(terminal, "Digite o primeiro parâmetro:");
+            int parametroDois = lerInteiro(terminal, "Digite o segundo parâmetro:");
 
-        System.out.println("Digite o primeiro parâmetro");
-        int parametroUm = terminal.nextInt();
-
-        System.out.println("Digite o segundo parâmetro");
-        int parametroDois = terminal.nextInt();
-
-        try {
-            // Chamando o método contendo a lógica de contagem
-            contar(parametroUm, parametroDois);
-        } catch (ParametrosInvalidosException exception) {
-            // Imprimir a mensagem: O segundo parâmetro deve ser maior que o primeiro
-            System.out.println(exception.getMessage());
+            try {
+                contar(parametroUm, parametroDois);
+            } catch (ParametrosInvalidosException exception) {
+                System.out.println(exception.getMessage());
+            }
         }
-
-        terminal.close();
     }
 
-    static void contar(int parametroUm, int parametroDois) throws ParametrosInvalidosException {
-        // Validar se parametroUm é MAIOR que parametroDois e lançar a exceção
+    private static int lerInteiro(Scanner terminal, String mensagem) {
+        while (true) {
+            System.out.println(mensagem);
+            String entrada = terminal.nextLine().trim();
+
+            try {
+                return Integer.parseInt(entrada);
+            } catch (NumberFormatException exception) {
+                System.out.println("Entrada inválida. Digite um número inteiro.");
+            }
+        }
+    }
+
+    static void contar(int parametroUm, int parametroDois)
+            throws ParametrosInvalidosException {
         if (parametroUm >= parametroDois) {
-            throw new ParametrosInvalidosException("O segundo parâmetro deve ser maior que o primeiro");
+            throw new ParametrosInvalidosException(
+                    "O segundo parâmetro deve ser maior que o primeiro");
         }
 
         int contagem = parametroDois - parametroUm;
-        // Realizar o for para imprimir os números com base na variável contagem
         for (int i = 1; i <= contagem; i++) {
             System.out.println("Imprimindo o número " + i);
         }
