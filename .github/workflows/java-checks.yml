@@ -1,0 +1,40 @@
+name: Java Control Flow Checks
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+permissions:
+  contents: read
+
+jobs:
+  compile-and-smoke-test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: desafio-java
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - name: Compile source files
+        run: javac -d out src/*.java
+      - name: Check valid input
+        shell: bash
+        run: |
+          output="$(printf '1\n5\n' | java -cp out Contador)"
+          printf '%s\n' "$output"
+          grep -q "Imprimindo o número 4" <<< "$output"
+      - name: Check invalid text input is handled
+        shell: bash
+        run: |
+          output="$(printf 'abc\n1\n5\n' | java -cp out Contador)"
+          printf '%s\n' "$output"
+          grep -q "Entrada inválida" <<< "$output"
+          grep -q "Imprimindo o número 4" <<< "$output"
